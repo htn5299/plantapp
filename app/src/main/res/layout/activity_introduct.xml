@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/custom_color_primary"
+    tools:context=".IntroductActivity">
+    
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/onboardingViewPager"
+        app:layout_constraintBottom_toTopOf="@id/viewCenter"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/background_viewpager"
+        />
+
+    <LinearLayout
+        android:id="@+id/indicatorContainer"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txtSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Kết thúc"
+        android:textSize="16sp"
+        android:textColor="@color/custom_color_primary"
+        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:layout_width="55dp"
+        android:background="@drawable/icon_outer"
+        app:layout_constraintBottom_toBottomOf="@id/imgNext"
+        app:layout_constraintStart_toStartOf="@id/imgNext"
+        app:layout_constraintEnd_toEndOf="@id/imgNext"
+        app:layout_constraintTop_toTopOf="@id/imgNext"
+        android:layout_height="55dp"/>
+    <View
+        android:id="@+id/viewCenter"
+        android:layout_width="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgNext"
+        app:layout_constraintStart_toStartOf="@id/imgNext"
+        app:layout_constraintEnd_toEndOf="@id/imgNext"
+        app:layout_constraintTop_toTopOf="@id/imgNext"
+        android:layout_height="1dp"/>
+    <ImageView
+        android:id="@+id/imgNext"
+        android:layout_width="45dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/baseline_chevron_right_24"
+        app:tint="@color/white"
+        android:layout_height="45dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/btnGetStarted"
+        android:text="Bắt đầu"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:layout_marginBottom="50dp"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/custom_color_secondary"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

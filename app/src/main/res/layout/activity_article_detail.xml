@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ArticleDetailActivity">
+
+    <RelativeLayout
+        android:id="@+id/image_layout"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:background="@android:color/transparent">
+
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/plant1" />
+
+        <ImageView
+            android:id="@+id/iconHeart"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="59dp"
+            android:layout_marginBottom="-2dp"
+            android:src="@drawable/baseline_add_circle_24"
+            app:tint="#E82A6A" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:inputType="textMultiLine"
+                android:textColor="@color/black"
+                android:text="Tên bài viết"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgPofile"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:padding="3dp"
+                    android:layout_gravity="center"
+                    app:strokeWidth="2dp"
+                    app:strokeColor="@android:color/darker_gray"
+                    app:shapeAppearanceOverlay="@style/circleImageView"
+                    android:src="@drawable/intro1"
+                    android:layout_marginRight="10dp"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtOwner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:padding="2dp"
+                        android:textColor="@color/black"
+                        android:text="Người tạo"/>
+                    <TextView
+                        android:id="@+id/txtDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:textStyle="italic"
+                        android:text="NGày tạo"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/txtContent"
+                android:layout_width="wrap_content"
+                android:inputType="textMultiLine"
+                android:textSize="20sp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+
+                android:layout_height="fill_parent"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

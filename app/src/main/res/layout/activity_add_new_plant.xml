@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNewPlantActivity"
+    android:scrollbars="vertical"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/imgPlant"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:src="@drawable/plant1"
+                android:layout_gravity="center"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddImage"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="250dp"
+                android:layout_height="70dp"
+                android:backgroundTint="#4CAF50"
+                android:text="Chọn ảnh mới"
+                android:textSize="17sp"
+                android:textAllCaps="false"
+                app:iconPadding="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.utils.widget.MotionLabel
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Tên thực vật"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    app:boxStrokeColor="#4CAF50"
+                    app:counterTextColor="@color/black"
+                    app:boxStrokeWidth="2dp"
+                    android:scrollbars="vertical"
+                    android:gravity="bottom"
+                    android:textColorHint="@color/black"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtPlantName"
+                        android:layout_width="match_parent"
+                        android:hint="Tên thực vật"
+                        android:textColor="@color/black"
+                        android:layout_height="60dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.constraintlayout.utils.widget.MotionLabel
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Tên loài"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    app:boxStrokeColor="#4CAF50"
+                    app:counterTextColor="@color/black"
+                    app:boxStrokeWidth="2dp"
+                    android:textColorHint="@color/black"
+                    android:layout_height="wrap_content">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/txtPlantType"
+                        android:layout_width="match_parent"
+                        android:hint="Tên loài"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.constraintlayout.utils.widget.MotionLabel
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Mô tả"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    app:boxStrokeColor="#4CAF50"
+                    app:counterTextColor="@color/black"
+                    app:boxStrokeWidth="2dp"
+                    android:textColorHint="@color/black"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtPlantDescription"
+                        android:layout_width="match_parent"
+                        android:hint="Mô tả"
+                        android:scrollbars="vertical"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="no"
+                        android:inputType="textMultiLine"
+                        android:textColor="@color/black"
+                        android:layout_height="60dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUpload"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="250dp"
+                android:layout_height="70dp"
+                android:backgroundTint="#813821"
+                android:text="Thêm mới"
+                android:textSize="17sp"
+                android:textAllCaps="false"
+                app:iconPadding="8dp"/>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
