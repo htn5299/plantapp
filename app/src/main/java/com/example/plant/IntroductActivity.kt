@@ -37,9 +37,9 @@ class IntroductActivity : AppCompatActivity() {
             navigate()
         }
 
-        findViewById<TextView>(R.id.txtSkip).setOnClickListener{
-            navigate()
-        }
+//        findViewById<TextView>(R.id.txtSkip).setOnClickListener{
+//            navigate()
+//        }
 
 
 
@@ -81,13 +81,18 @@ class IntroductActivity : AppCompatActivity() {
             listOf(
                 OnboardingItem(
                     onboardingImage = R.drawable.intro1,
-                    title = "Đa dạng các loài",
-                    content = "Khám phá các loài thực vật phong phú và mới mẻ"
+                    title = "Identify Plants",
+                    content = "You can identify the plants you don't know through your camera"
                 ),
                 OnboardingItem(
                     onboardingImage = R.drawable.intro2,
-                    title = "Dễ dàng sử dụng",
-                    content = "Chia sẻ tới mọi người các loài thực vật mới"
+                    title = "Learn Many Plants Species",
+                    content = "Let's learn about the many plant species that exist in this world"
+                ),
+                OnboardingItem(
+                    onboardingImage = R.drawable.intro3,
+                    title = "Read Many Articles About Plant",
+                    content = "Let's learn more about beautiful plants and read many articles about plants and gardening"
                 ),
             )
         )

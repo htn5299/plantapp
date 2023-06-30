@@ -31,7 +31,7 @@ class PlantListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_plant_list)
         val actionbar = supportActionBar
         //set actionbar title
-        actionbar!!.title = "Danh sách thực vật"
+        actionbar!!.title = "Plant List"
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
         actionbar.setDisplayHomeAsUpEnabled(true)
@@ -47,7 +47,10 @@ class PlantListActivity : AppCompatActivity() {
                 Log.i("SNAPSHOT", snapshot.value.toString())
                 plants = snapshot.children.map {
                         dataSnapshot ->
-                    dataSnapshot.getValue(Plant::class.java)!!
+                    val plantId = dataSnapshot.key // Lấy ID của nút con
+                    val plant = dataSnapshot.getValue(Plant::class.java)!!.copy(id = plantId)
+                    Log.i("plantWid", plant.toString())
+                    plant
                 }
                 if (intent.hasExtra("type")){
                     Log.i("Type", intent.getStringExtra("type").toString())
@@ -85,7 +88,7 @@ class PlantListActivity : AppCompatActivity() {
             intent1.putExtra("type", plants[position].type)
             intent1.putExtra("date", plants[position].date)
             intent1.putExtra("description", plants[position].description)
-
+            intent1.putExtra("id", plants[position].id)
             startActivity(intent1)
         }
 

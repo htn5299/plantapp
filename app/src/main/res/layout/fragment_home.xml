@@ -1,36 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.HomeFragment"
     android:background="@color/white"
-    android:orientation="vertical">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:orientation="vertical"
+    tools:context=".fragment.HomeFragment">
+
 
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
-
-
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="#3AC840"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
+                android:background="@color/green_light"
                 android:orientation="horizontal"
                 android:paddingLeft="20dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="90dp"
@@ -38,18 +31,20 @@
 
                     <TextView
                         android:id="@+id/txtDisplayName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Chuc bạn ngày mới vui vẻ"
-                        android:textSize="18sp"
+                        android:text="Hello Taylor,"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textStyle="italic"
                         android:layout_marginTop="5dp"
-                        android:text="Chào mừng bạn đến với chúng tôi"/>
+                        android:text="Let’s Learn More About Plants"
+                        android:textColor="@color/white"
+                        android:textStyle="normal" />
                 </LinearLayout>
 
                 <com.google.android.material.imageview.ShapeableImageView
@@ -57,12 +52,12 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
-                    android:padding="5dp"
                     android:layout_margin="10dp"
-                    app:strokeWidth="2dp"
-                    app:strokeColor="@android:color/darker_gray"
+                    android:padding="5dp"
+                    android:src="@drawable/avatar"
                     app:shapeAppearanceOverlay="@style/circleImageView"
-                    android:src="@drawable/intro1" />
+                    app:strokeColor="@android:color/darker_gray"
+                    app:strokeWidth="2dp" />
 
 
             </LinearLayout>
@@ -70,41 +65,41 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
+                android:background="@color/white"
                 android:gravity="center"
+                android:orientation="horizontal"
                 android:paddingTop="10dp"
-                android:background="@color/custom_color_primary"
                 android:paddingBottom="10dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardViewUpload"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    app:cardElevation="10dp"
-                    app:cardCornerRadius="20dp"
                     app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp"
                     app:cardPreventCornerOverlap="true"
-                    android:layout_marginEnd="5dp"
                     app:cardUseCompatPadding="false">
+
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="top|center"
-                        android:src="@drawable/camera"
-                        android:layout_marginTop="20dp"
                         android:id="@+id/img"
-                        android:contentDescription="@string/app_name" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="top|center"
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/camera" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginTop="60dp"
                         android:layout_marginBottom="20dp"
-                        android:text="Tải lên"
+                        android:text="ADDING NEW"
                         android:textSize="15sp"
-                        android:layout_marginTop="70dp"
-                        android:textStyle="normal" />
+                        android:textStyle="bold" />
 
 
                 </androidx.cardview.widget.CardView>
@@ -113,17 +108,17 @@
                     android:id="@+id/cardViewPlant"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="20dp"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="10dp"
                     app:cardPreventCornerOverlap="true"
-                    android:layout_marginEnd="5dp"
                     app:cardUseCompatPadding="false">
 
                     <ImageView
                         android:id="@+id/img2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="top|center"
                         android:layout_marginTop="20dp"
                         android:contentDescription="@string/app_name"
@@ -133,11 +128,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
-                        android:layout_marginTop="70dp"
+                        android:layout_marginTop="60dp"
                         android:layout_marginBottom="20dp"
-                        android:text="Thực vật"
+                        android:text="SPECIES"
                         android:textSize="15sp"
-                        android:textStyle="normal" />
+                        android:textStyle="bold" />
 
 
                 </androidx.cardview.widget.CardView>
@@ -146,30 +141,31 @@
                     android:id="@+id/cardViewArticle"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    app:cardElevation="10dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardPreventCornerOverlap="true"
                     android:paddingTop="10dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp"
+                    app:cardPreventCornerOverlap="true"
                     app:cardUseCompatPadding="false">
+
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:id="@+id/img1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="top|center"
                         android:layout_marginTop="20dp"
-                        android:src="@drawable/article"
-                        android:id="@+id/img1"
-                        android:contentDescription="@string/app_name" />
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/article" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginTop="60dp"
                         android:layout_marginBottom="20dp"
-                        android:text="Bài viết"
+                        android:text="ARTICLES"
                         android:textSize="15sp"
-                        android:layout_marginTop="70dp"
-                        android:textStyle="normal" />
+                        android:textStyle="bold" />
 
 
                 </androidx.cardview.widget.CardView>
@@ -180,16 +176,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:paddingBottom="10dp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Danh sách loài"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="18sp"/>
+                    android:text="Plant Types"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="20sp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold" />
 
                 <HorizontalScrollView
                     android:id="@+id/horizontalScrollView"
@@ -203,93 +200,225 @@
 
                         <RelativeLayout
                             android:id="@+id/rltPlant1"
-                            android:layout_width="250dp"
+                            android:layout_width="220dp"
                             android:layout_height="140dp"
                             android:padding="4dp">
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/plant1" />
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                app:cardCornerRadius="5dp"
+                                app:cardUseCompatPadding="true"
+                                app:cardElevation="0dp"
+                                >
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/flower_type"
+                                    android:scaleType="center" />
+                            </androidx.cardview.widget.CardView>
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Thực vật 1"
-                                android:textColor="@color/white"
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginBottom="20dp"
+                                android:layout_marginStart="10dp"
                                 android:padding="4dp"
+                                android:text="Flowering Plants"
+                                android:textColor="@color/white"
                                 android:textSize="20sp"
-                                android:textStyle="normal" />
+                                android:textStyle="normal"
+                                />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Khám phá tôi"
-                                android:textColor="@color/white"
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginBottom="4sp"
+                                android:layout_marginStart="10dp"
                                 android:padding="4dp"
+                                android:text="2 Types of Plants"
+                                android:textColor="@color/white"
                                 android:textSize="16sp"
                                 android:textStyle="normal" />
                         </RelativeLayout>
+
                         <RelativeLayout
                             android:id="@+id/rltPlant2"
-                            android:layout_width="250dp"
+                            android:layout_width="220dp"
                             android:layout_height="140dp"
                             android:padding="4dp">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                app:cardCornerRadius="5dp"
+                                app:cardUseCompatPadding="true"
+                                app:cardElevation="0dp"
+                                >
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/plant4"
-                                />
+                                android:scaleType="center"
+                                android:background="@drawable/apple_type" />
+                            </androidx.cardview.widget.CardView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Thực vật 2"
-                                android:textColor="@color/white"
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginBottom="20dp"
+                                android:layout_marginStart="10dp"
                                 android:padding="4dp"
+                                android:text="Fruit Trees"
+                                android:textColor="@color/white"
                                 android:textSize="20sp"
                                 android:textStyle="normal" />
+
                             <TextView
                                 android:id="@+id/text1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Khám phá tôi"
-                                android:textColor="@color/white"
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginBottom="4sp"
+                                android:layout_marginStart="10dp"
                                 android:padding="4dp"
+                                android:text="12 Types of Plants"
+                                android:textColor="@color/white"
                                 android:textSize="16sp"
                                 android:textStyle="normal" />
                         </RelativeLayout>
+
                         <RelativeLayout
                             android:id="@+id/rltPlant3"
-                            android:layout_width="250dp"
+                            android:layout_width="220dp"
                             android:layout_height="140dp"
                             android:padding="4dp">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                app:cardCornerRadius="5dp"
+                                app:cardUseCompatPadding="true"
+                                app:cardElevation="0dp"
+                                >
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/plant3" />
+                                android:scaleType="center"
+
+                                android:background="@drawable/wood_type" />
+                            </androidx.cardview.widget.CardView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Thực vật 3"
-                                android:textColor="@color/white"
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginBottom="20dp"
+                                android:layout_marginStart="10dp"
                                 android:padding="4dp"
+                                android:text="Woody Plants"
+                                android:textColor="@color/white"
                                 android:textSize="20sp"
                                 android:textStyle="normal" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Khám phá tôi"
-                                android:textColor="@color/white"
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginBottom="4sp"
+                                android:layout_marginStart="10dp"
                                 android:padding="4dp"
+                                android:text="24 Types of Plants"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="normal" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rltPlant4"
+                            android:layout_width="220dp"
+                            android:layout_height="140dp"
+                            android:padding="4dp">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                app:cardCornerRadius="5dp"
+                                app:cardUseCompatPadding="true"
+                                app:cardElevation="0dp"
+                                >
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="center"
+                                android:background="@drawable/vegetable_type" />
+                            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="20dp"
+                                android:layout_marginStart="10dp"
+                                android:padding="4dp"
+                                android:text="Vegetable Plants"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="normal" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="4sp"
+                                android:layout_marginStart="10dp"
+                                android:padding="4dp"
+                                android:text="31 Types of Plants"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="normal" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rltPlant5"
+                            android:layout_width="220dp"
+                            android:layout_height="140dp"
+                            android:padding="4dp">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                app:cardCornerRadius="5dp"
+                                app:cardUseCompatPadding="true"
+                                app:cardElevation="0dp"
+                                >
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="center"
+                                android:background="@drawable/bonsai_type" />
+                            </androidx.cardview.widget.CardView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="20dp"
+                                android:layout_marginStart="10dp"
+                                android:padding="4dp"
+                                android:text="Bonsai"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:textStyle="normal" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="4sp"
+                                android:layout_marginStart="10dp"
+                                android:padding="4dp"
+                                android:text="6 Types of Plants"
+                                android:textColor="@color/white"
                                 android:textSize="16sp"
                                 android:textStyle="normal" />
                         </RelativeLayout>
@@ -298,35 +427,35 @@
                 </HorizontalScrollView>
 
             </LinearLayout>
-            <LinearLayout
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/custom_color_secondary_light"
+                android:layout_height="wrap_content"
+                android:background="#192A2B2A"
+                android:orientation="vertical"
                 android:padding="10dp"
-                android:orientation="vertical">
+                tools:context=".ArticleListActivity">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Danh sách bài đăng"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
                     android:layout_marginBottom="10dp"
-                    android:textSize="18sp"/>
-                <ScrollView
+                    android:text="Articles"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <GridView
+                    android:id="@+id/grvArticleHome"
                     android:layout_width="match_parent"
-                    android:padding="5dp"
-                    android:layout_height="fill_parent">
-                    <GridView
-                        android:id="@+id/grvArticle"
-                        android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:horizontalSpacing="10dp"
-                        android:numColumns="1"
-                        android:verticalSpacing="10dp"/>
-                </ScrollView>
+                    android:layout_height="match_parent"
+                    android:horizontalSpacing="10dp"
+                    android:numColumns="1"
+                    android:verticalSpacing="10dp" />
+
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>

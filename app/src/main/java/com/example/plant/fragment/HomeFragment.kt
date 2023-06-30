@@ -71,6 +71,9 @@ class HomeFragment : Fragment() {
     lateinit var rltPlant1 : RelativeLayout
     lateinit var rltPlant2 : RelativeLayout
     lateinit var rltPlant3 : RelativeLayout
+    lateinit var rltPlant4 : RelativeLayout
+    lateinit var rltPlant5 : RelativeLayout
+    private val items = listOf("Hoa", "Cây ăn quả", "Cây gỗ", "Rau", "Cây cảnh")
     private val cameraRequest = 1888
     var database = Firebase.database
     var myRef = database.getReference("articles")
@@ -98,11 +101,13 @@ class HomeFragment : Fragment() {
         cardViewUpload = view.findViewById(R.id.cardViewUpload)
         cardViewPlant = view.findViewById(R.id.cardViewPlant)
         cardViewArticle = view.findViewById(R.id.cardViewArticle)
-        grvArticle = view.findViewById(R.id.grvArticle)
+        grvArticle = view.findViewById(R.id.grvArticleHome)
         txtDisplayName = view.findViewById(R.id.txtDisplayName)
         rltPlant1 = view.findViewById(R.id.rltPlant1)
         rltPlant2 = view.findViewById(R.id.rltPlant2)
         rltPlant3 = view.findViewById(R.id.rltPlant3)
+        rltPlant4 = view.findViewById(R.id.rltPlant4)
+        rltPlant5 = view.findViewById(R.id.rltPlant5)
         progress = ProgressDialog(view.context)
         progress.setTitle("Đợi chút...")
         progress.setMessage("Đang tải dữ liệu...")
@@ -112,10 +117,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
-
+        txtDisplayName.text = "Hello ${Firebase.auth.currentUser!!.email.toString().replace("@gmail.com", "")},"
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 progress.show()
@@ -190,17 +192,27 @@ class HomeFragment : Fragment() {
 
         rltPlant1.setOnClickListener{
             val intent = Intent(this.context, PlantListActivity::class.java)
-            intent.putExtra("type", "Thực vật 1")
+            intent.putExtra("type", items[0])
             startActivity(intent)
         }
         rltPlant2.setOnClickListener{
             val intent = Intent(this.context, PlantListActivity::class.java)
-            intent.putExtra("type", "Thực vật 2")
+            intent.putExtra("type", items[1])
             startActivity(intent)
         }
         rltPlant3.setOnClickListener{
             val intent = Intent(this.context, PlantListActivity::class.java)
-            intent.putExtra("type", "Thực vật 3")
+            intent.putExtra("type",  items[2])
+            startActivity(intent)
+        }
+        rltPlant4.setOnClickListener{
+            val intent = Intent(this.context, PlantListActivity::class.java)
+            intent.putExtra("type", items[3])
+            startActivity(intent)
+        }
+        rltPlant5.setOnClickListener{
+            val intent = Intent(this.context, PlantListActivity::class.java)
+            intent.putExtra("type",  items[4])
             startActivity(intent)
         }
     }

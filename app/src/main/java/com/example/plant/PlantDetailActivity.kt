@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.example.plant.models.ArticleLike
+import com.example.plant.models.PlantLike
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -32,10 +32,11 @@ class PlantDetailActivity : AppCompatActivity() {
     var color : Int = 0
     var database = Firebase.database
     var myRef = database.getReference("like_plants")
-    lateinit var likes : List<ArticleLike>
+    lateinit var likes : List<PlantLike>
     var auth : FirebaseAuth = FirebaseAuth.getInstance()
     private val firebaseRef = FirebaseDatabase.getInstance().getReference("like_plants")
     var position : Int = 0
+    var id : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +50,8 @@ class PlantDetailActivity : AppCompatActivity() {
         description = findViewById(R.id.description)
         iconHeart = findViewById(R.id.iconHeart)
         position = intent.getIntExtra("position", -1)
+        id = intent.getStringExtra("id").toString()
+        Log.i("id123", id)
         if (intent.hasExtra("disable")){
             iconHeart.visibility = View.GONE
         }else{
@@ -57,22 +60,21 @@ class PlantDetailActivity : AppCompatActivity() {
         myRef.child(auth.currentUser!!.email.toString().replace("@gmail.com", "")).addValueEventListener(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val like : List<ArticleLike> = snapshot.children.map {
+                val like : List<PlantLike> = snapshot.children.map {
                         dataSnapshot ->
-                    dataSnapshot.getValue(ArticleLike::class.java)!!
+                    dataSnapshot.getValue(PlantLike::class.java)!!
                 }
                 likes = like
-                if (!likes.any{ it.position == position}) {
+                if (!likes.any{ it.position == id}) {
                     Log.i("Like", true.toString())
-                    color = R.color.pink
-                    iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.pink), android.graphics.PorterDuff.Mode.SRC_IN)
+                    color = R.color.gray_dark
+                    iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.gray_dark), android.graphics.PorterDuff.Mode.SRC_IN)
                 }else{
                     Log.i("Like", false.toString())
-                    color = R.color.custom_color_secondary
-                    iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.custom_color_secondary), android.graphics.PorterDuff.Mode.SRC_IN)
+                    color = R.color.pink
+                    iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.pink), android.graphics.PorterDuff.Mode.SRC_IN)
 
                 }
-
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -95,12 +97,12 @@ class PlantDetailActivity : AppCompatActivity() {
         Picasso.get().load(intent.getStringExtra("image")).into(img);
 
         iconHeart.setOnClickListener{
-            if (color == R.color.pink){
-                color = R.color.custom_color_secondary
+            if (color == R.color.gray_dark){
+                color = R.color.pink
                 Toast.makeText(this, "Liked", Toast.LENGTH_SHORT).show()
                 like()
             }else{
-                color = R.color.pink
+                color = R.color.gray_dark
                 Toast.makeText(this, "Disliked", Toast.LENGTH_SHORT).show()
                 dislike()
             }
@@ -113,15 +115,14 @@ class PlantDetailActivity : AppCompatActivity() {
         return true
     }
     private fun like(){
-        iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.custom_color_secondary), android.graphics.PorterDuff.Mode.SRC_IN)
+        iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.pink), android.graphics.PorterDuff.Mode.SRC_IN)
         val newData = firebaseRef!!.child(auth.currentUser!!.email.toString().replace("@gmail.com", "")).push()
-        newData.setValue(hashMapOf("position" to position))
+        newData.setValue(hashMapOf("position" to id))
     }
 
     private fun dislike(){
-        iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.pink), android.graphics.PorterDuff.Mode.SRC_IN)
-        val applesQuery: Query = myRef.child(auth.currentUser!!.email.toString().replace("@gmail.com", "")).orderByChild("position").equalTo(position.toDouble())
-
+        iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.gray_dark), android.graphics.PorterDuff.Mode.SRC_IN)
+        val applesQuery: Query = myRef.child(auth.currentUser!!.email.toString().replace("@gmail.com", "")).orderByChild("position").equalTo(id)
         applesQuery.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (appleSnapshot in dataSnapshot.children) {

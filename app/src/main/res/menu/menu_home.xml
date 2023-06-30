@@ -3,21 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_home"
-        android:title="Home"
+        android:title=""
         android:icon="@drawable/baseline_home_24"
-        app:cnb_iconColor="#3DB3E8"
-        app:cnb_backgroundColor="#FF6C756D"/>
+        app:cnb_iconColor="@color/green_light"
+        
+        app:cnb_backgroundColor="@color/white"/>
 
     <item
         android:id="@+id/menu_blank"
         android:title=""
         android:enabled="false"
+        app:cnb_iconColor="@color/green_light"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/menu_profile"
-        android:title="Cá nhân"
+        android:title=""
         android:icon="@drawable/baseline_person_pin_24"
-        app:cnb_iconColor="#3DB3E8"
-        app:cnb_backgroundColor="#6C756D"/>
+        app:cnb_iconColor="@color/green_light"
+        app:cnb_backgroundColor="@color/white"/>
 </menu>

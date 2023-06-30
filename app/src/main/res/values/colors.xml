@@ -7,4 +7,7 @@
     <color name="custom_color_secondary_light">#FFD299</color>
     <color name="custom_color_text_secondary">#464747</color>
     <color name="pink">#E8316F</color>
+    <color name="green_light">#2DDA93</color>
+    <color name="gray">#D2D2D2</color>
+    <color name="gray_dark">#2B2B2B</color>
 </resources>

@@ -16,12 +16,11 @@ class ForgotPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
-        var password = findViewById<TextInputEditText>(R.id.txtEmail)
+        var email = findViewById<TextInputEditText>(R.id.txtEmail)
         var btnReset = findViewById<MaterialButton>(R.id.btnQuenMK)
 
         btnReset.setOnClickListener{
-            val newpass = password.text.toString().trim()
-            auth.sendPasswordResetEmail(newpass)
+            auth.sendPasswordResetEmail(email.text.toString().trim())
                 .addOnSuccessListener {
                     Toast.makeText(this, "Kiểm tra email của bạn", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, LoginActivity::class.java)

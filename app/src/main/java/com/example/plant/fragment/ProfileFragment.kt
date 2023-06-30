@@ -23,6 +23,7 @@ import com.example.plant.R
 import com.example.plant.models.Article
 import com.example.plant.models.ArticleLike
 import com.example.plant.models.Plant
+import com.example.plant.models.PlantLike
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -67,7 +68,7 @@ class ProfileFragment : Fragment() {
             intent1.putExtra("type", plants[position].type)
             intent1.putExtra("date", plants[position].date)
             intent1.putExtra("description", plants[position].description)
-
+            intent1.putExtra("id", plants[position].id)
             startActivity(intent1)
         }
         grvArticle.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
@@ -79,8 +80,10 @@ class ProfileFragment : Fragment() {
             intent.putExtra("owner", articles[position].owner)
             intent.putExtra("content", articles[position].content)
             intent.putExtra("date", articles[position].date)
+            intent.putExtra("id", articles[position].id)
 
             startActivity(intent)
+
         }
 
     }
@@ -91,7 +94,8 @@ class ProfileFragment : Fragment() {
                 Log.i("SNAPSHOT", snapshot.value.toString())
                 articles = snapshot.children.map {
                         dataSnapshot ->
-                    dataSnapshot.getValue(Article::class.java)!!
+                    val plant = dataSnapshot.getValue(Article::class.java)!!.copy(id =  dataSnapshot.key)
+                    plant
                 }
 
 
@@ -102,20 +106,17 @@ class ProfileFragment : Fragment() {
 
             }
         })
-        var article_likes : List<Article> = emptyList()
+//        var article_likes : List<Article> = emptyList()
         database.getReference("like_articles").child(Firebase.auth.currentUser!!.email.toString().replace("@gmail.com", "")).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val like : List<ArticleLike> = snapshot.children.map {
                         dataSnapshot ->
                     dataSnapshot.getValue(ArticleLike::class.java)!!
                 }
-
-                for (item in like){
-                    article_likes = article_likes + articles[item.position!!]
-
+                val article_like = articles.filter { article ->
+                    like.contains(ArticleLike(article.id))
                 }
-                Log.i("Article like", article_likes.toString())
-                articleAdapter = ArticleGridViewAdapter(articleList = article_likes, view.context)
+                articleAdapter = ArticleGridViewAdapter(articleList = article_like, view.context)
                 grvArticle.adapter = articleAdapter
             }
 
@@ -130,30 +131,30 @@ class ProfileFragment : Fragment() {
                 Log.i("SNAPSHOT", snapshot.value.toString())
                 plants = snapshot.children.map {
                         dataSnapshot ->
-                    dataSnapshot.getValue(Plant::class.java)!!
+                    val plantId = dataSnapshot.key // Lấy ID của nút con
+                    val plant = dataSnapshot.getValue(Plant::class.java)!!.copy(id = plantId)
+                    Log.i("plantWid", plant.toString())
+                    plant
                 }
-
-
-                Log.i("Array", articles.toString())
             }
-
             override fun onCancelled(error: DatabaseError) {
-
             }
         })
-        var plants_like : List<Plant> = emptyList()
+
         database.getReference("like_plants").child(Firebase.auth.currentUser!!.email.toString().replace("@gmail.com", "")).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val like : List<ArticleLike> = snapshot.children.map {
+                val like : List<PlantLike> = snapshot.children.map {
                         dataSnapshot ->
-                    dataSnapshot.getValue(ArticleLike::class.java)!!
+                    dataSnapshot.getValue(PlantLike::class.java)!!
                 }
 
-                for (item in like){
-                    plants_like = plants_like + plants[item.position!!]
-
+                val plants_like=if (like.isNotEmpty()) {
+                    plants.filter { plant ->
+                          like.contains(PlantLike(plant.id))
+                    }
+                } else {
+                    emptyList()
                 }
-                Log.i("Plant like", plants_like.toString())
                 plantAdapter = PlantGridViewAdapter(courseList = plants_like, view.context)
                 grvPlant.adapter = plantAdapter
             }

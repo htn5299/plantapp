@@ -1,12 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
-        android:id="@+id/one"
-        android:title="Đăng xuất"/>
 
     <item
         android:id="@+id/two"
         android:title="Đăng bài"/>
+
+    <item
+        android:id="@+id/one"
+        android:title="Đăng xuất"/>
+
 
 
 </menu>

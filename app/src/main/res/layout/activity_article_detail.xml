@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="210dp"
             android:layout_marginBottom="10dp"
-            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="center"
             android:src="@drawable/plant1" />
 
         <ImageView
@@ -30,7 +31,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="59dp"
             android:layout_marginBottom="-2dp"
-            android:src="@drawable/baseline_add_circle_24"
+            android:src="@drawable/heart_icon"
             app:tint="#E82A6A" />
     </RelativeLayout>
     <ScrollView

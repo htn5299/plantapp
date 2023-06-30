@@ -30,7 +30,7 @@ class ArticleListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article_list)
         val actionbar = supportActionBar
-        actionbar!!.title = "Danh sách bài viết"
+        actionbar!!.title = "Article List"
         actionbar.setDisplayHomeAsUpEnabled(true)
         actionbar.setDisplayHomeAsUpEnabled(true)
         progress = ProgressDialog(this)
@@ -47,7 +47,8 @@ class ArticleListActivity : AppCompatActivity() {
                 Log.i("SNAPSHOT", snapshot.value.toString())
                 articles = snapshot.children.map {
                         dataSnapshot ->
-                    dataSnapshot.getValue(Article::class.java)!!
+                    val plant = dataSnapshot.getValue(Article::class.java)!!.copy(id =  dataSnapshot.key)
+                    plant
                 }
                 courseAdapter = ArticleGridViewAdapter(articleList = articles, this@ArticleListActivity)
                 gridView.adapter = courseAdapter
@@ -69,6 +70,7 @@ class ArticleListActivity : AppCompatActivity() {
             intent.putExtra("owner", articles[position].owner)
             intent.putExtra("content", articles[position].content)
             intent.putExtra("date", articles[position].date)
+            intent.putExtra("id", articles[position].id)
 
             startActivity(intent)
         }

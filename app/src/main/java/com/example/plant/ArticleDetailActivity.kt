@@ -36,6 +36,7 @@ class ArticleDetailActivity : AppCompatActivity() {
     var auth : FirebaseAuth = FirebaseAuth.getInstance()
     private val firebaseRef = FirebaseDatabase.getInstance().getReference("like_articles")
     var position : Int = 0
+    var id : String = ""
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +50,7 @@ class ArticleDetailActivity : AppCompatActivity() {
         date = findViewById(R.id.txtDate)
         iconHeart = findViewById(R.id.iconHeart)
         position = intent.getIntExtra("position", -1)
-
+        id = intent.getStringExtra("id").toString()
         if (intent.hasExtra("disable")){
             iconHeart.visibility = View.GONE
         }else{
@@ -64,14 +65,14 @@ class ArticleDetailActivity : AppCompatActivity() {
                     dataSnapshot.getValue(ArticleLike::class.java)!!
                 }
                 likes = like
-                if (!likes.any{ it.position == position}) {
+                if (!likes.any{ it.position == id}) {
                     Log.i("Like", true.toString())
-                    color = R.color.pink
-                    iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.pink), android.graphics.PorterDuff.Mode.SRC_IN)
+                    color = R.color.gray_dark
+                    iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.gray_dark), android.graphics.PorterDuff.Mode.SRC_IN)
                 }else{
                     Log.i("Like", false.toString())
-                    color = R.color.custom_color_secondary
-                    iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.custom_color_secondary), android.graphics.PorterDuff.Mode.SRC_IN)
+                    color = R.color.pink
+                    iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.pink), android.graphics.PorterDuff.Mode.SRC_IN)
 
                 }
 
@@ -98,12 +99,12 @@ class ArticleDetailActivity : AppCompatActivity() {
         Picasso.get().load(intent.getStringExtra("image")).into(img)
 
         iconHeart.setOnClickListener{
-            if (color == R.color.pink){
-                color = R.color.custom_color_secondary
+            if (color == R.color.gray_dark){
+                color = R.color.pink
                 Toast.makeText(this, "Liked", Toast.LENGTH_SHORT).show()
                 like()
             }else{
-                color = R.color.pink
+                color = R.color.gray_dark
                 Toast.makeText(this, "Disliked", Toast.LENGTH_SHORT).show()
                 dislike()
             }
@@ -116,14 +117,14 @@ class ArticleDetailActivity : AppCompatActivity() {
     }
 
     private fun like(){
-        iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.custom_color_secondary), android.graphics.PorterDuff.Mode.SRC_IN)
+        iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.pink), android.graphics.PorterDuff.Mode.SRC_IN)
         val newData = firebaseRef!!.child(auth.currentUser!!.email.toString().replace("@gmail.com", "")).push()
-        newData.setValue(hashMapOf("position" to position))
+        newData.setValue(hashMapOf("position" to id))
     }
 
     private fun dislike(){
-        iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.pink), android.graphics.PorterDuff.Mode.SRC_IN)
-        val applesQuery: Query = myRef.child(auth.currentUser!!.email.toString().replace("@gmail.com", "")).orderByChild("position").equalTo(position.toDouble())
+        iconHeart.setColorFilter(ContextCompat.getColor(applicationContext, R.color.gray_dark), android.graphics.PorterDuff.Mode.SRC_IN)
+        val applesQuery: Query = myRef.child(auth.currentUser!!.email.toString().replace("@gmail.com", "")).orderByChild("position").equalTo(id)
 
         applesQuery.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {

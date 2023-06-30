@@ -1,6 +1,7 @@
 package com.example.plant
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -33,7 +34,7 @@ import com.google.firebase.storage.FirebaseStorage as FirebaseStorage1
 class AddNewPlantActivity : AppCompatActivity() {
     var auth : FirebaseAuth = FirebaseAuth.getInstance()
     lateinit var uri : Uri
-    private val items = listOf("Thực vật 1", "Thực vật 2", "Thực vật 3")
+    private val items = listOf("Hoa", "Cây ăn quả", "Cây gỗ", "Rau", "Cây cảnh")
     lateinit var dropdown : AutoCompleteTextView
     lateinit var plantName : TextInputEditText
     lateinit var plantDescription : TextInputEditText
@@ -126,6 +127,9 @@ class AddNewPlantActivity : AppCompatActivity() {
                             firebaseRef.child(plantId).setValue(plant)
                                 .addOnSuccessListener {
                                     Toast.makeText(this, "Save success", Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this, MainActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
                                 }
                                 .addOnFailureListener{
                                     Toast.makeText(this, "Save fail", Toast.LENGTH_SHORT).show()

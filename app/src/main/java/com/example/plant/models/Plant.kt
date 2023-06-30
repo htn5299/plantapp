@@ -8,5 +8,6 @@ data class Plant (
     val type: String? = null,
     val description: String? = null,
     val image : String? = null,
-    val date : String? = null
+    val date : String? = null,
+    var id: String?=null
 )
