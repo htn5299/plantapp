@@ -1,17 +1,16 @@
 package com.example.plant
 
-import android.bluetooth.BluetoothCsipSetCoordinator
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -23,7 +22,8 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
-import java.lang.Exception
+import java.security.AccessController.getContext
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var chipNavigationBar: ChipNavigationBar
@@ -44,20 +44,34 @@ class MainActivity : AppCompatActivity() {
         chipNavigationBar.setItemSelected(R.id.menu_home, true)
         supportFragmentManager.beginTransaction().replace(R.id.root_layout, HomeFragment()).commit()
         coordinator.setBackgroundColor(getColor(R.color.black))
-
+        if (ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.CAMERA)
+            == PackageManager.PERMISSION_DENIED)
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), cameraRequest)
         bottomMenu()
-
-
-
         btnAddNewPlant.setOnClickListener{
-            if (ContextCompat.checkSelfPermission(applicationContext, android.Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_DENIED)
-                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), cameraRequest)
-            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(cameraIntent, cameraRequest)
+            try {
+                val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(cameraIntent, cameraRequest)
+            }
+            catch (ex: Exception)
+            {}
         }
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == cameraRequest) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == cameraRequest) {
