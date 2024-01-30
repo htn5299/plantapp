@@ -1,0 +1,7 @@
+0.0.0.0    www.facebook.com
+0.0.0.0    m.facebook.com
+0.0.0.0    app.getonmic.com
+0.0.0.0    www.getonmic.com
+0.0.0.0    twitter.com
+0.0.0.0    www.instagram.com
+0.0.0.0    www.pinterest.com
